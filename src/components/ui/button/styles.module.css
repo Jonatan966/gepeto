@@ -1,0 +1,26 @@
+.buttonContainer {
+  padding: 0.75rem;
+  font-weight: bolder;
+  text-align: left;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonContainer span {
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.outlineButton {
+  border: 1.5px solid #ffffff33;
+  background: transparent;
+}
+
+.buttonContainer:hover,
+.buttonContainer[data-selected="true"] {
+  background: #343541;
+}

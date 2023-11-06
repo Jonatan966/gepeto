@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -5,21 +6,22 @@ export default function Home() {
     <div className={styles.container}>
       <aside className={styles.chatsMenu}>
         <header>
-          <button>Nova conversa</button>
-          <button>B</button>
+          <Button variant="outline">Nova conversa</Button>
+          <Button variant="outline">B</Button>
         </header>
 
         <main>
-          <button data-selected="true">Chat tal</button>
-          <button>
+          <Button data-selected="true">Chat tal</Button>
+          <Button>
             <span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </span>
-          </button>
-          <button>Chat tal</button>
-          <button>Chat tal</button>
-          <button>Chat tal</button>
-          <button>Chat tal</button>
+          </Button>
+          <Button>Chat tal</Button>
+          <Button>Chat tal</Button>
+          <Button>Chat tal</Button>
+          <Button>Chat tal</Button>
+          <Button>Chat tal</Button>
         </main>
 
         <footer>Jonatan Frederico</footer>
