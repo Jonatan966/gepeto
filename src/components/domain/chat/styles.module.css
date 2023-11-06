@@ -1,0 +1,65 @@
+.messageWrapper {
+  padding: 0 1rem;
+}
+
+.robotMessageWrapper {
+  background: #444654;
+}
+
+.messageContainer {
+  display: flex;
+  gap: 1rem;
+
+  max-width: 1024px;
+  width: 100%;
+  margin: auto;
+
+  padding: 1.5rem 0;
+}
+
+.messageContainer img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.25rem;
+}
+
+.messageContainer p {
+  line-height: 1.75;
+  color: #d1d5db;
+}
+
+/* ----------- */
+
+.chat {
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+}
+
+.chat header {
+  display: flex;
+  justify-content: center;
+  padding: 1.15rem;
+
+  border-bottom: 1px solid #ffffff33;
+
+  position: sticky;
+  top: 0;
+  background: #343541;
+}
+
+.chat main {
+  flex: 1;
+  display: block;
+}
+
+.chat footer {
+  display: block;
+
+  position: sticky;
+  bottom: 0;
+
+  background: #343541;
+  padding: 0 1rem;
+}
