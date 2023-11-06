@@ -1,0 +1,159 @@
+.container {
+  display: grid;
+  grid-template-columns: 320px auto;
+  height: 100vh;
+}
+
+.chatsMenu {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: #202123;
+}
+
+.chatsMenu main {
+  flex: 1;
+
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chatsMenu main button {
+  padding: 0.8rem 0.5rem;
+  font-weight: bolder;
+  text-align: left;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.chatsMenu main button span {
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.chatsMenu main button:hover,
+.chatsMenu main button[data-selected="true"] {
+  background: #343541;
+}
+
+.chatsMenu header {
+  position: sticky;
+  top: 0;
+
+  background: #202123;
+  padding: 0.5rem;
+
+  display: flex;
+  gap: 0.5rem;
+
+  border-bottom: 1px solid #ffffff33;
+}
+
+.chatsMenu header button {
+  padding: 0.75rem;
+  background: transparent;
+  border: 1.5px solid #ffffff33;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  font-weight: 700;
+}
+
+.chatsMenu header button:nth-child(1) {
+  flex: 1;
+  text-align: left;
+}
+
+.chatsMenu footer {
+  position: sticky;
+  bottom: 0;
+  background: #202123;
+  padding: 1rem;
+
+  border-top: 1px solid #ffffff33;
+  font-weight: bold;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+}
+
+.chat header {
+  display: flex;
+  justify-content: center;
+  padding: 1.15rem;
+
+  border-bottom: 1px solid #ffffff33;
+
+  position: sticky;
+  top: 0;
+  background: #343541;
+}
+
+.chat main {
+  flex: 1;
+  display: block;
+}
+
+.chat main .messageContainer {
+  /* background: #444654; */
+  padding: 0 1rem;
+}
+
+.chat main .message {
+  display: flex;
+  gap: 1rem;
+
+  max-width: 1024px;
+  width: 100%;
+  margin: auto;
+
+  padding: 1.5rem 0;
+}
+
+.chat main .message img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.25rem;
+}
+
+.chat main .message p {
+  line-height: 1.75;
+  color: #d1d5db;
+}
+
+.chat footer {
+  display: block;
+
+  position: sticky;
+  bottom: 0;
+
+  background: #343541;
+  padding: 0 1rem;
+}
+
+.chat footer > div {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0.5rem auto;
+
+  background: #40414f;
+  border-radius: 0.5rem;
+}
+
+.chat footer > div input {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+}
