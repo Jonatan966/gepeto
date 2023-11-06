@@ -1,0 +1,44 @@
+.chatsBar {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: #202123;
+}
+
+.chatsBar main {
+  flex: 1;
+
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chatsBar header {
+  position: sticky;
+  top: 0;
+
+  background: #202123;
+  padding: 0.5rem;
+
+  display: flex;
+  gap: 0.5rem;
+
+  border-bottom: 1px solid #ffffff33;
+}
+
+.chatsBar header button:nth-child(1) {
+  flex: 1;
+  text-align: left;
+}
+
+.chatsBar footer {
+  position: sticky;
+  bottom: 0;
+  background: #202123;
+  padding: 1rem;
+
+  border-top: 1px solid #ffffff33;
+  font-weight: bold;
+}

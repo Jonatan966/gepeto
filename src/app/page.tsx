@@ -1,31 +1,10 @@
-import { Button } from "@/components/ui/button";
 import styles from "./page.module.css";
+import { ChatsBar } from "@/components/domain/chats-bar";
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <aside className={styles.chatsMenu}>
-        <header>
-          <Button variant="outline">Nova conversa</Button>
-          <Button variant="outline">B</Button>
-        </header>
-
-        <main>
-          <Button data-selected="true">Chat tal</Button>
-          <Button>
-            <span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </span>
-          </Button>
-          <Button>Chat tal</Button>
-          <Button>Chat tal</Button>
-          <Button>Chat tal</Button>
-          <Button>Chat tal</Button>
-          <Button>Chat tal</Button>
-        </main>
-
-        <footer>Jonatan Frederico</footer>
-      </aside>
+      <ChatsBar />
       <main className={styles.chat}>
         <header>
           <span>Novo chat</span>
