@@ -1,0 +1,15 @@
+.textFieldContainer {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+}
+
+.textFieldWrapper {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0.5rem auto;
+
+  background: #40414f;
+  border-radius: 0.5rem;
+}

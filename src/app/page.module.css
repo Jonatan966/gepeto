@@ -64,19 +64,3 @@
   background: #343541;
   padding: 0 1rem;
 }
-
-.chat footer > div {
-  max-width: 1024px;
-  width: 100%;
-  margin: 0.5rem auto;
-
-  background: #40414f;
-  border-radius: 0.5rem;
-}
-
-.chat footer > div input {
-  width: 100%;
-  padding: 1rem;
-  background: transparent;
-  border: none;
-}

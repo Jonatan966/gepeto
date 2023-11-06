@@ -1,3 +1,4 @@
+import { TextField } from "@/components/ui/text-field";
 import styles from "./page.module.css";
 import { ChatsBar } from "@/components/domain/chats-bar";
 
@@ -103,9 +104,7 @@ export default function Home() {
           </div>
         </main>
         <footer>
-          <div>
-            <input type="text" placeholder="Envie uma mensagem" />
-          </div>
+          <TextField placeholder="Envie uma mensagem" />
         </footer>
       </main>
     </div>
