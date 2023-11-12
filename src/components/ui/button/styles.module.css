@@ -8,6 +8,7 @@
   cursor: pointer;
 
   transition: background 0.2s;
+  border: 1.5px solid transparent;
 }
 
 .buttonContainer span {
@@ -18,7 +19,11 @@
 }
 
 .outlineButton {
-  border: 1.5px solid #ffffff33;
+  border-color: #ffffff33;
+  background: transparent;
+}
+
+.ghostButton {
   background: transparent;
 }
 

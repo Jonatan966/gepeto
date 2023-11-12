@@ -2,7 +2,7 @@ import { forwardRef, ComponentProps } from "react";
 
 import styles from "./styles.module.css";
 
-type ButtonVariant = "contained" | "outline";
+type ButtonVariant = "contained" | "outline" | "ghost";
 
 type ButtonProps = ComponentProps<"button"> & {
   variant?: ButtonVariant;
@@ -11,6 +11,7 @@ type ButtonProps = ComponentProps<"button"> & {
 const variants: Record<ButtonVariant, string> = {
   contained: "",
   outline: styles.outlineButton,
+  ghost: styles.ghostButton,
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
