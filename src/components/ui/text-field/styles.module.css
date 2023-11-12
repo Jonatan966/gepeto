@@ -7,9 +7,8 @@
 }
 
 .textFieldWrapper {
-  max-width: 1024px;
-  width: 100%;
   margin: 0.5rem auto;
+  width: 100%;
 
   background: #40414f;
   border-radius: 0.5rem;

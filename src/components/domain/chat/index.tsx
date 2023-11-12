@@ -6,7 +6,7 @@ import { Message } from "./message";
 import styles from "./styles.module.css";
 import { useChatsBar } from "@/components/contexts/chats-bar-context";
 import { Button } from "@/components/ui/button";
-import { PanelLeft } from "lucide-react";
+import { PanelLeft, Send, Mic } from "lucide-react";
 
 export function Chat() {
   const { toggleChatsBar, chatsBarIsOpen } = useChatsBar();
@@ -32,7 +32,15 @@ export function Chat() {
         <Message isRobot />
       </main>
       <footer>
-        <TextField placeholder="Envie uma mensagem" />
+        <div>
+          <TextField placeholder="Envie uma mensagem" />
+          <Button variant="ghost" style={{ fontSize: 0 }}>
+            <Mic size={18} />
+          </Button>
+          <Button variant="outline" style={{ fontSize: 0 }}>
+            <Send size={18} />
+          </Button>
+        </div>
       </footer>
     </main>
   );

@@ -3,12 +3,16 @@
   font-weight: bolder;
   text-align: left;
 
-  background: none;
+  background: #ffffff33;
   border: none;
   cursor: pointer;
 
-  transition: background 0.2s;
+  transition: background 0.2s, opacity 0.2s;
   border: 1.5px solid transparent;
+}
+
+.buttonContainer:hover {
+  opacity: 0.8;
 }
 
 .buttonContainer span {

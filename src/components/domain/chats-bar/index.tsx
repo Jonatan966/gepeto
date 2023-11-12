@@ -27,17 +27,19 @@ export function ChatsBar() {
         </header>
 
         <main>
-          <Button data-selected="true">Chat tal</Button>
-          <Button>
+          <Button variant="ghost" data-selected="true">
+            Chat tal
+          </Button>
+          <Button variant="ghost">
             <span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </span>
           </Button>
-          <Button>Chat tal</Button>
-          <Button>Chat tal</Button>
-          <Button>Chat tal</Button>
-          <Button>Chat tal</Button>
-          <Button>Chat tal</Button>
+          <Button variant="ghost">Chat tal</Button>
+          <Button variant="ghost">Chat tal</Button>
+          <Button variant="ghost">Chat tal</Button>
+          <Button variant="ghost">Chat tal</Button>
+          <Button variant="ghost">Chat tal</Button>
         </main>
 
         <footer>Jonatan Frederico</footer>

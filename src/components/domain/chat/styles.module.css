@@ -80,6 +80,16 @@
   border-top: 1px solid #ffffff33;
 }
 
+.chat footer > div {
+  max-width: 1024px;
+  width: 100%;
+  margin: auto;
+
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 @media (min-width: 1024px) {
   .chat header button[data-chat-open="on"] {
     opacity: 0;
