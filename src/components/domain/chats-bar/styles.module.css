@@ -1,6 +1,5 @@
 .chatsBar {
-  background: #202123;
-  transition: transform 0.2s, width 0.2s;
+  transition: transform 0.2s, width 0.2s, background 0.4s;
   display: block;
   position: relative;
 
@@ -13,6 +12,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  background: #202123;
 }
 
 .chatsBar main {
@@ -64,12 +64,17 @@
     z-index: 3;
   }
 
+  .chatsBar .wrapper {
+    width: 85%;
+  }
+
   .chatsBar[data-open="on"] {
     transform: translateX(-100%);
   }
 
   .chatsBar[data-open="off"] {
     transform: translateX(0%);
+    background: #20212379;
   }
 
   .chatsBar .wrapper {
