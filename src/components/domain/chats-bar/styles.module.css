@@ -1,8 +1,18 @@
 .chatsBar {
+  background: #202123;
+  transition: transform;
+  display: block;
+  position: relative;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.chatsBar .wrapper {
+  min-width: 320px;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  background: #202123;
+  height: 100%;
 }
 
 .chatsBar main {
@@ -41,4 +51,24 @@
 
   border-top: 1px solid #ffffff33;
   font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .chatsBar {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+  }
+
+  .chatsBar[data-open="on"] {
+    transform: translateX(0%);
+  }
+
+  .chatsBar[data-open="off"] {
+    transform: translateX(-100%);
+  }
+
+  .chatsBar .wrapper {
+    min-width: auto;
+  }
 }
