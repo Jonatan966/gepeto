@@ -31,7 +31,6 @@
   background: transparent;
 }
 
-.buttonContainer:hover,
 .buttonContainer[data-selected="true"] {
   background: #343541;
 }

@@ -37,7 +37,7 @@ export function Chat() {
           <Button variant="ghost" style={{ fontSize: 0 }}>
             <Mic size={18} />
           </Button>
-          <Button variant="outline" style={{ fontSize: 0 }}>
+          <Button style={{ fontSize: 0 }}>
             <Send size={18} />
           </Button>
         </div>
