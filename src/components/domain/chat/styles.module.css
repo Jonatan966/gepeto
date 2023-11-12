@@ -1,5 +1,5 @@
 .messageWrapper {
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 }
 
 .robotMessageWrapper {
@@ -75,7 +75,9 @@
   bottom: 0;
 
   background: #343541;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
+
+  border-top: 1px solid #ffffff33;
 }
 
 @media (min-width: 1024px) {
