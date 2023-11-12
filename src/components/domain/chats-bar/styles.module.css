@@ -1,6 +1,6 @@
 .chatsBar {
   background: #202123;
-  transition: transform;
+  transition: transform 0.2s, width 0.2s;
   display: block;
   position: relative;
 
@@ -61,14 +61,24 @@
   }
 
   .chatsBar[data-open="on"] {
-    transform: translateX(0%);
+    transform: translateX(-100%);
   }
 
   .chatsBar[data-open="off"] {
-    transform: translateX(-100%);
+    transform: translateX(0%);
   }
 
   .chatsBar .wrapper {
     min-width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .chatsBar[data-open="on"] {
+    width: 320px;
+  }
+
+  .chatsBar[data-open="off"] {
+    width: 0px;
   }
 }

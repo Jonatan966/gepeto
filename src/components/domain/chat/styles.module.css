@@ -36,18 +36,31 @@
 
   overflow-y: auto;
   position: relative;
+
+  flex: 1;
 }
 
 .chat header {
   display: flex;
   justify-content: center;
-  padding: 1.15rem;
+  align-items: center;
+
+  padding: 0.5rem;
 
   border-bottom: 1px solid #ffffff33;
 
   position: sticky;
   top: 0;
   background: #343541;
+}
+
+.chat header > span {
+  flex: 1;
+  text-align: center;
+}
+
+.chat header button {
+  transition: opacity 0.2s;
 }
 
 .chat main {
@@ -63,4 +76,12 @@
 
   background: #343541;
   padding: 0 1rem;
+}
+
+@media (min-width: 1024px) {
+  .chat header button[data-chat-open="on"] {
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+  }
 }
