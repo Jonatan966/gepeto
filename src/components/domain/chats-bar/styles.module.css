@@ -54,7 +54,21 @@
 
   display: flex;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
+
+  gap: 0.5rem;
+}
+
+.chatsBar footer span {
+  flex: 1;
+}
+
+.chatsBar footer button {
+  text-align: center;
+}
+
+.avatar {
+  border-radius: 100%;
 }
 
 @media (max-width: 1024px) {

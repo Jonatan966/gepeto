@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import styles from "./styles.module.css";
 import { useChatsBar } from "@/components/contexts/chats-bar-context";
 import { PanelLeft } from "lucide-react";
+import { UserFooter } from "./user-footer";
 
 export function ChatsBar() {
   const { chatsBarIsOpen, toggleChatsBar } = useChatsBar();
@@ -42,7 +43,7 @@ export function ChatsBar() {
           <Button variant="ghost">Chat tal</Button>
         </main>
 
-        <footer>Jonatan Frederico</footer>
+        <UserFooter />
       </div>
     </aside>
   );
