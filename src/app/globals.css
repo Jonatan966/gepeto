@@ -108,8 +108,21 @@ a {
   text-decoration: none;
 }
 
+.spinner {
+  animation: spinner 1s linear infinite;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
