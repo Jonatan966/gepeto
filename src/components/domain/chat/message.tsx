@@ -1,25 +1,34 @@
 import clsx from "clsx";
+import { Message } from "ai/react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+
 import styles from "./styles.module.css";
 
 interface MessageProps {
-  isRobot?: boolean;
+  message: Message;
 }
 
-export function Message(props: MessageProps) {
+export function Message({ message }: MessageProps) {
+  const session = useSession();
+
+  const isRobot = message.role !== "user";
+  const userImage = session?.data?.user?.image || "/default-user.png";
+
   return (
     <div
       className={clsx(styles.messageWrapper, {
-        [styles.robotMessageWrapper]: props?.isRobot,
+        [styles.robotMessageWrapper]: isRobot,
       })}
     >
       <div className={styles.messageContainer}>
-        <img src="https://github.com/Jonatan966.png" alt="Jonatan" />
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-          architecto maiores, deleniti inventore ipsa nisi. Neque, accusantium
-          expedita ullam quaerat id doloribus magnam odio, excepturi voluptatem
-          saepe eum maiores illo?
-        </p>
+        <Image
+          src={isRobot ? "/gepeto.png" : userImage}
+          alt={isRobot ? "Imagem de Gepeto" : "Imagem do usuário"}
+          width={64}
+          height={64}
+        />
+        <p>{message.content}</p>
       </div>
     </div>
   );

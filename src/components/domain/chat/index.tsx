@@ -1,15 +1,27 @@
 "use client";
 
+import { PanelLeft, Send, Mic } from "lucide-react";
+import { useChat } from "ai/react";
+
 import { TextField } from "@/components/ui/text-field";
+import { useChatsBar } from "@/components/contexts/chats-bar-context";
+import { Button } from "@/components/ui/button";
 import { Message } from "./message";
 
 import styles from "./styles.module.css";
-import { useChatsBar } from "@/components/contexts/chats-bar-context";
-import { Button } from "@/components/ui/button";
-import { PanelLeft, Send, Mic } from "lucide-react";
 
-export function Chat() {
+interface ChatProps {
+  chatId: string;
+}
+
+export function Chat({ chatId }: ChatProps) {
   const { toggleChatsBar, chatsBarIsOpen } = useChatsBar();
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    id: chatId,
+    body: {
+      chatId,
+    },
+  });
 
   return (
     <main className={styles.chat}>
@@ -25,22 +37,24 @@ export function Chat() {
         <span>Novo chat</span>
       </header>
       <main>
-        <Message isRobot />
-        <Message />
-        <Message isRobot />
-        <Message />
-        <Message isRobot />
+        {messages.map((message) => (
+          <Message {...{ message }} key={message.id} />
+        ))}
       </main>
       <footer>
-        <div>
-          <TextField placeholder="Envie uma mensagem" />
-          <Button variant="ghost" style={{ fontSize: 0 }}>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            placeholder="Envie uma mensagem"
+            onChange={handleInputChange}
+            value={input}
+          />
+          <Button variant="ghost" style={{ fontSize: 0 }} type="button">
             <Mic size={18} />
           </Button>
-          <Button style={{ fontSize: 0 }}>
+          <Button style={{ fontSize: 0 }} type="submit">
             <Send size={18} />
           </Button>
-        </div>
+        </form>
       </footer>
     </main>
   );
