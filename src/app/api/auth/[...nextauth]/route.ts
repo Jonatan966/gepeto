@@ -1,9 +1,18 @@
 import { prisma } from "@/services/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions, DefaultSession } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 
-export const authOptions = {
+declare module "next-auth" {
+  interface Session {
+    user: {
+      /** The user's id. */
+      id: string;
+    } & DefaultSession["user"];
+  }
+}
+
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     DiscordProvider({
@@ -11,6 +20,17 @@ export const authOptions = {
       clientSecret: process.env.DISCORD_CLIENT_SECRET!,
     }),
   ],
+  callbacks: {
+    session(params) {
+      return {
+        ...params.session,
+        user: {
+          ...params.session.user,
+          id: params.user.id,
+        },
+      };
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);
