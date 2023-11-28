@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 import { useChatsBar } from "@/components/contexts/chats-bar-context";
 import { PanelLeft } from "lucide-react";
 import { UserFooter } from "./user-footer";
+import Link from "next/link";
 
 export function ChatsBar() {
   const { chatsBarIsOpen, toggleChatsBar } = useChatsBar();
@@ -17,7 +18,11 @@ export function ChatsBar() {
     >
       <div className={styles.wrapper}>
         <header>
-          <Button variant="outline">Nova conversa</Button>
+          <Link href="/">
+            <Button variant="outline" style={{ width: "100%" }}>
+              Nova conversa
+            </Button>
+          </Link>
           <Button
             variant="outline"
             onClick={toggleChatsBar}
@@ -28,9 +33,11 @@ export function ChatsBar() {
         </header>
 
         <main>
-          <Button variant="ghost" data-selected="true">
-            Chat tal
-          </Button>
+          <Link href="/chat/bla">
+            <Button variant="ghost" data-selected="true">
+              Chat tal
+            </Button>
+          </Link>
           <Button variant="ghost">
             <span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
