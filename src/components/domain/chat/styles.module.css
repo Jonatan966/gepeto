@@ -65,7 +65,8 @@
 
 .chat main {
   flex: 1;
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat footer {
@@ -88,6 +89,18 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+
+.welcomeMessage {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.welcomeMessage img {
+  border-radius: 50%;
 }
 
 @media (min-width: 1024px) {

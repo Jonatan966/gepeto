@@ -13,6 +13,7 @@ import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { conversations } from "@prisma/client";
 import { Message as MessageType } from "ai";
+import { WelcomeMessage } from "./welcome-message";
 
 interface ChatProps {
   chatId: string;
@@ -69,6 +70,7 @@ export function Chat({ chatId, isNew, title, savedMessages = [] }: ChatProps) {
         <span>{title || "Novo chat"}</span>
       </header>
       <main>
+        {!messages.length && <WelcomeMessage />}
         {messages.map((message) => (
           <Message {...{ message }} key={message.id} />
         ))}

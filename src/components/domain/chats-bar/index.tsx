@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-
 import styles from "./styles.module.css";
 import { useChatsBar } from "@/components/contexts/chats-bar-context";
 import { PanelLeft } from "lucide-react";
