@@ -14,13 +14,19 @@ interface ChatsBarContextProps {
 
 interface ChatsBarProviderProps {
   children: ReactNode;
+  previousChats: chats[];
 }
 
 const ChatsBarContext = createContext({} as ChatsBarContextProps);
 
 export function ChatsBarProvider(props: ChatsBarProviderProps) {
   const [chatsBarIsOpen, setChatsBarIsOpen] = useState(true);
-  const [chats, setChats] = useState<TinyChat[]>([]);
+  const [chats, setChats] = useState<TinyChat[]>(
+    props.previousChats.map((chat) => ({
+      id: chat.id,
+      title: chat.title,
+    }))
+  );
 
   function toggleChatsBar() {
     setChatsBarIsOpen((oldChatsBarIsOpen) => !oldChatsBarIsOpen);

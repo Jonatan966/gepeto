@@ -8,6 +8,7 @@ import { ChatsBarProvider } from "@/components/contexts/chats-bar-context";
 import { ChatsBar } from "@/components/domain/chats-bar";
 
 import styles from "./page.module.css";
+import { prisma } from "@/services/prisma";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,12 +26,19 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession(authOptions);
+  const chats = session
+    ? await prisma.chats.findMany({
+        where: {
+          callerId: session?.user.id,
+        },
+      })
+    : [];
 
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
         <SessionProvider session={session}>
-          <ChatsBarProvider>
+          <ChatsBarProvider previousChats={chats}>
             <div className={styles.container}>
               <ChatsBar />
 
