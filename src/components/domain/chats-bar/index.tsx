@@ -7,8 +7,10 @@ import { useChatsBar } from "@/components/contexts/chats-bar-context";
 import { PanelLeft } from "lucide-react";
 import { UserFooter } from "./user-footer";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 export function ChatsBar() {
+  const pageParams = useParams<{ id: string }>();
   const { chatsBarIsOpen, chats, toggleChatsBar } = useChatsBar();
 
   return (
@@ -35,7 +37,10 @@ export function ChatsBar() {
         <main>
           {chats.map((chat) => (
             <Link href={`/chat/${chat.id}`} key={chat.id}>
-              <Button variant="ghost" data-selected="true">
+              <Button
+                variant="ghost"
+                data-selected={pageParams.id === chat.id ? "true" : "false"}
+              >
                 <span>{chat.title}</span>
               </Button>
             </Link>
