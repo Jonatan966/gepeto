@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { OpenAIStream, StreamingTextResponse } from "ai";
+import { Message, OpenAIStream, StreamingTextResponse } from "ai";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { prisma } from "@/services/prisma";
@@ -11,7 +11,7 @@ const openai = new OpenAI({
 export async function POST(req: Request) {
   const { messages, chatId } = await req.json();
 
-  const lastUserMessage = messages.at(-1);
+  const lastUserMessage = messages.at(-1) as Message;
   const session = await getServerSession(authOptions);
   const userId = session?.user.id;
 
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     await prisma.chats.create({
       data: {
         callerId: account?.providerAccountId,
-        title: lastUserMessage,
+        title: lastUserMessage.content,
         id: chatId,
       },
     });
@@ -43,7 +43,14 @@ export async function POST(req: Request) {
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     stream: true,
-    messages,
+    messages: [
+      {
+        role: "system",
+        content:
+          "Você é um assistente virtual que ajuda o usuário com o que puder, sendo simpático e sucinto",
+      },
+      ...messages,
+    ],
   });
 
   const stream = OpenAIStream(response, {
