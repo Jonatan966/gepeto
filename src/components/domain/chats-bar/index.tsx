@@ -9,7 +9,7 @@ import { UserFooter } from "./user-footer";
 import Link from "next/link";
 
 export function ChatsBar() {
-  const { chatsBarIsOpen, toggleChatsBar } = useChatsBar();
+  const { chatsBarIsOpen, chats, toggleChatsBar } = useChatsBar();
 
   return (
     <aside
@@ -33,21 +33,13 @@ export function ChatsBar() {
         </header>
 
         <main>
-          <Link href="/chat/bla">
-            <Button variant="ghost" data-selected="true">
-              Chat tal
-            </Button>
-          </Link>
-          <Button variant="ghost">
-            <span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </span>
-          </Button>
-          <Button variant="ghost">Chat tal</Button>
-          <Button variant="ghost">Chat tal</Button>
-          <Button variant="ghost">Chat tal</Button>
-          <Button variant="ghost">Chat tal</Button>
-          <Button variant="ghost">Chat tal</Button>
+          {chats.map((chat) => (
+            <Link href={`/chat/${chat.id}`} key={chat.id}>
+              <Button variant="ghost" data-selected="true">
+                <span>{chat.title}</span>
+              </Button>
+            </Link>
+          ))}
         </main>
 
         <UserFooter />
