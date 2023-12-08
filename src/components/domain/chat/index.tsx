@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { conversations } from "@prisma/client";
 import { Message as MessageType } from "ai";
 import { WelcomeMessage } from "./welcome-message";
+import { useSession } from "next-auth/react";
 
 interface ChatProps {
   chatId: string;
@@ -24,6 +25,9 @@ interface ChatProps {
 
 export function Chat({ chatId, isNew, title, savedMessages = [] }: ChatProps) {
   const router = useRouter();
+  const session = useSession();
+
+  const hasUnauthenticated = session.status !== "authenticated";
 
   const { toggleChatsBar, addChat, chatsBarIsOpen } = useChatsBar();
   const { messages, input, handleInputChange, handleSubmit } = useChat({
@@ -81,11 +85,21 @@ export function Chat({ chatId, isNew, title, savedMessages = [] }: ChatProps) {
             placeholder="Envie uma mensagem"
             onChange={handleInputChange}
             value={input}
+            disabled={hasUnauthenticated}
           />
-          <Button variant="ghost" style={{ fontSize: 0 }} type="button">
+          <Button
+            variant="ghost"
+            style={{ fontSize: 0 }}
+            type="button"
+            disabled={hasUnauthenticated}
+          >
             <Mic size={18} />
           </Button>
-          <Button style={{ fontSize: 0 }} type="submit">
+          <Button
+            style={{ fontSize: 0 }}
+            type="submit"
+            disabled={hasUnauthenticated}
+          >
             <Send size={18} />
           </Button>
         </form>
