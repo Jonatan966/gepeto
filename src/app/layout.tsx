@@ -4,6 +4,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { SessionProvider } from "@/components/contexts/session-context";
+import { ChatsBarProvider } from "@/components/contexts/chats-bar-context";
+import { ChatsBar } from "@/components/domain/chats-bar";
+
+import styles from "./page.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +29,15 @@ export default async function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <SessionProvider session={session}>{children}</SessionProvider>
+        <SessionProvider session={session}>
+          <ChatsBarProvider>
+            <div className={styles.container}>
+              <ChatsBar />
+
+              {children}
+            </div>
+          </ChatsBarProvider>
+        </SessionProvider>
       </body>
     </html>
   );

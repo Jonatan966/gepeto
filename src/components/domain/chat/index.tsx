@@ -9,19 +9,51 @@ import { Button } from "@/components/ui/button";
 import { Message } from "./message";
 
 import styles from "./styles.module.css";
+import { FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { conversations } from "@prisma/client";
+import { Message as MessageType } from "ai";
 
 interface ChatProps {
   chatId: string;
+  isNew?: boolean;
+  title?: string | null;
+  savedMessages?: conversations[];
 }
 
-export function Chat({ chatId }: ChatProps) {
-  const { toggleChatsBar, chatsBarIsOpen } = useChatsBar();
+export function Chat({ chatId, isNew, title, savedMessages = [] }: ChatProps) {
+  const router = useRouter();
+
+  const { toggleChatsBar, addChat, chatsBarIsOpen } = useChatsBar();
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     id: chatId,
     body: {
       chatId,
     },
+    onFinish() {
+      if (!isNew) {
+        return;
+      }
+
+      router.replace(`/chat/${chatId}`);
+    },
+    initialMessages: savedMessages.map((msg) => ({
+      content: msg.content,
+      id: msg.id,
+      role: msg.role as MessageType["role"],
+    })),
   });
+
+  function onSendMessage(event: FormEvent<HTMLFormElement>) {
+    if (!messages.length) {
+      addChat({
+        id: chatId,
+        title: input,
+      });
+    }
+
+    handleSubmit(event);
+  }
 
   return (
     <main className={styles.chat}>
@@ -34,7 +66,7 @@ export function Chat({ chatId }: ChatProps) {
         >
           <PanelLeft size={16} />
         </Button>
-        <span>Novo chat</span>
+        <span>{title || "Novo chat"}</span>
       </header>
       <main>
         {messages.map((message) => (
@@ -42,7 +74,7 @@ export function Chat({ chatId }: ChatProps) {
         ))}
       </main>
       <footer>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSendMessage}>
           <TextField
             placeholder="Envie uma mensagem"
             onChange={handleInputChange}
