@@ -21,19 +21,12 @@ export async function POST(req: Request) {
     });
   }
 
-  const [account, savedChat] = await Promise.all([
-    prisma.account.findFirst({
-      where: {
-        userId,
-      },
-    }),
-    prisma.chats.findUnique({ where: { id: chatId } }),
-  ]);
+  const savedChat = await prisma.chats.findUnique({ where: { id: chatId } });
 
   if (!savedChat) {
     await prisma.chats.create({
       data: {
-        callerId: account?.providerAccountId,
+        callerId: userId,
         title: lastUserMessage.content,
         id: chatId,
       },
@@ -61,13 +54,13 @@ export async function POST(req: Request) {
             chatId,
             content: lastUserMessage.content,
             role: "user",
-            userId: account?.providerAccountId!,
+            userId,
           },
           {
             chatId,
             content: completion,
             role: "assistant",
-            userId: account?.providerAccountId!,
+            userId,
           },
         ],
       });
